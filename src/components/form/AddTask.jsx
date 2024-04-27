@@ -22,16 +22,6 @@ const inputs = [
         validationMessage: validateNameTaskMessage,
         type: 'text'
     }, {
-        field: 'status',
-        label: "Status",
-        validationMessage: validateStateMessage,
-        type: 'text'
-    }, {
-        field: 'dateBegin',
-        label: "Date Begin",
-        validationMessage: validateDateMessage,
-        type: 'date'
-    }, {
         field: 'dateEnd',
         label: "Date End",
         validationMessage: validateDateMessage,
@@ -53,16 +43,6 @@ export const AddTask = () => {
     const { addTask, isLoading } = useAddTask();
     const [formState, setFormState] = useState({
         nameTask: {
-            value: '',
-            isValid: false,
-            showError: false
-        },
-        status: {
-            value: '',
-            isValid: false,
-            showError: false
-        },
-        dateBegin: {
             value: '',
             isValid: false,
             showError: false
@@ -100,12 +80,6 @@ export const AddTask = () => {
             case 'nameTask':
                 isValid = validateNameTask(value)
                 break;
-            case 'status':
-                isValid = validateState(value)
-                break;
-            case 'dateBegin':
-                isValid = validateDate(value)
-                break;
             case 'dateEnd':
                 isValid = validateDate(value)
                 break;
@@ -126,90 +100,101 @@ export const AddTask = () => {
                 showError: !isValid
             }
         }))
+
+        console.log("isLoading ", isLoading, "nameTask ", !formState.nameTask.isValid
+            , "dateEnd ", !formState.dateEnd.isValid,
+            "description ", !formState.description.isValid);
     }
 
     const handleAddTask = (event) => {
         event.preventDefault();
-        addTask(formState.nameTask.value, formState.status.value,
-            formState.dateBegin.value, formState.dateEnd.value,
+        addTask(formState.nameTask.value,
+            formState.dateEnd.value,
             formState.nameUser.value, formState.description.value);
     }
 
-    const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid 
-    || !formState.status.isValid || !formState.dateBegin.isValid 
-    || !formState.dateEnd.isValid || !formState.nameUser.isValid || !formState.description.isValid;
+    const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid
+        || !formState.dateEnd.isValid ||
+        !formState.description.isValid;
+
+
 
     return (
-        <div className="container">
-            <div className="column py-6">
-                <form className="">
-                    <Input
-                        field={'nameTask'}
-                        placeholder={'Name Task'}
-                        label={'Name Task'}
-                        value={formState.nameTask.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'text'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.nameTask.showError}
-                        validationMessage={validateNameTaskMessage}
-                    />
-                    <Input
-                        field={'status'}
-                        placeholder={'Status'}
-                        label={'Status'}
-                        value={formState.status.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'text'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.status.showError}
-                        validationMessage={validateStateMessage}
-                    />
-                    <Input
-                        field={'dateBegin'}
-                        label={'Date Begin'}
-                        value={formState.dateBegin.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'date'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.dateBegin.showError}
-                        validationMessage={validateDateMessage}
-                    />
-                    <Input
-                        field={'dateEnd'}
-                        label={'Date End'}
-                        value={formState.dateEnd.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'date'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.dateEnd.showError}
-                        validationMessage={validateDateMessage}
-                    />
-                    <Input
-                        field={'nameUser'}
-                        label={'Name User'}
-                        placeholder={'Name user'}
-                        value={formState.nameUser.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'text'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.nameUser.showError}
-                        validationMessage={validateNameMessage}
-                    />
-                    <Input
-                        field={'description'}
-                        placeholder={'Description'}
-                        label={'Description'}
-                        value={formState.description.value}
-                        onChangeHandler={handleInputValueChange}
-                        type={'textarea'}
-                        onBlurHandler={handleInputValidationOnBlur}
-                        showErroMessage={formState.description.showError}
-                        validationMessage={validateDescriptionMessage}
-                    />
-                    <button className="button is-success is-fullwidth " onClick={handleAddTask} disabled={isSubmitButtonDisabled}>AGREGAR</button>
-                </form>
+        <div className="columns is-centered">
+            <div className="column is-half">
+                <div className="card">
+                    <div className="card-content">
+                        <div className="content">
+                            <h1 className="title columns is-centered">Agregar Tarea</h1>
+                            <form className="">
+                                <div className="field">
+                                    <Input
+                                        field={'nameTask'}
+                                        placeholder={'Name Task'}
+                                        label={'Name Task'}
+                                        value={formState.nameTask.value}
+                                        onChangeHandler={handleInputValueChange}
+                                        type={'text'}
+                                        onBlurHandler={handleInputValidationOnBlur}
+                                        showErroMessage={formState.nameTask.showError}
+                                        validationMessage={validateNameTaskMessage}
+                                    />
+                                </div>
 
+                                <div className="field">
+                                    <Input
+                                        field={'description'}
+                                        placeholder={'Description'}
+                                        label={'Description'}
+                                        value={formState.description.value}
+                                        onChangeHandler={handleInputValueChange}
+                                        type={'textarea'}
+                                        onBlurHandler={handleInputValidationOnBlur}
+                                        showErroMessage={formState.description.showError}
+                                        validationMessage={validateDescriptionMessage}
+                                    />
+                                </div>
+
+
+                                <div className="field">
+                                    <Input
+                                        field={'dateEnd'}
+                                        label={'Date End'}
+                                        value={formState.dateEnd.value}
+                                        onChangeHandler={handleInputValueChange}
+                                        type={'date'}
+                                        onBlurHandler={handleInputValidationOnBlur}
+                                        showErroMessage={formState.dateEnd.showError}
+                                        validationMessage={validateDateMessage}
+                                    />
+                                </div>
+
+                                {/*
+                                <div className="field">
+                                    <Input
+                                        field={'nameUser'}
+                                        label={'Name User'}
+                                        placeholder={'Name user'}
+                                        value={formState.nameUser.value}
+                                        onChangeHandler={handleInputValueChange}
+                                        type={'text'}
+                                        onBlurHandler={handleInputValidationOnBlur}
+                                        showErroMessage={formState.nameUser.showError}
+                                        validationMessage={validateNameMessage}
+                                    />
+                                </div>
+                                    */}
+
+
+                                <div className="control">
+                                    <button className="button is-success is-fullwidth " onClick={handleAddTask} disabled={isSubmitButtonDisabled}>AGREGAR</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
