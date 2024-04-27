@@ -1,15 +1,28 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL:'http://127.0.0.1:8080/almacenadora/v1',
-    timeout:1000
+    baseURL: 'http://127.0.0.1:8080/almacenadora/v1',
+    timeout: 1000
 })
-export const addTask=async (data)=>{
+
+
+export const addTask = async (data) => {
     try {
-        return await apiClient.post('/to-do/createToDo',data);
+        return await apiClient.post('/to-do/createToDo', data);
     } catch (e) {
-        return{
-            error:true,
+        return {
+            error: true,
+            e
+        }
+    }
+};
+
+export const login = async (data) => {
+    try {
+        return await apiClient.post('/auth/login', data);
+    } catch (e) {
+        return {
+            error: true,
             e
         }
     }
