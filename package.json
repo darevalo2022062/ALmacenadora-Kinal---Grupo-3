@@ -15,7 +15,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+<<<<<<< HEAD
     "react-router-dom": "^6.22.3"
+=======
+    "react-router-dom": "^6.23.0"
+>>>>>>> e9271616cf3bdd24dc65b5f28da43f2257f77991
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
