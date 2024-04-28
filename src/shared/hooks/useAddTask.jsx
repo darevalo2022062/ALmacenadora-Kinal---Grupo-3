@@ -9,11 +9,8 @@ export const useAddTask = () => {
     const addTask = async (nameTask, description, dateEnd) => {
         setIsLoading(true);
         let nameUser = JSON.parse(localStorage.getItem('name'));
-        console.log(nameTask, " ", nameUser, " ", dateEnd, " ", description);
         const response = await addTaskRequest({ nameTask, nameUser, description, dateEnd });
-
-        console.log("Response Data: ", response);
-
+        toast.success("Tarea agregada con exito")
         setIsLoading(false);
 
         if (response.error) {

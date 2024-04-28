@@ -24,8 +24,9 @@ export const useLogin = () => {
         localStorage.setItem('user', JSON.stringify(token));
         localStorage.setItem('name', JSON.stringify(name));
 
-
         navigate("/taskBoard");
+        return toast.success("Login successful")
+        
 
     }
 

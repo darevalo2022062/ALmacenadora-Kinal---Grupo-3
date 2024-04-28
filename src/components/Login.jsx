@@ -78,46 +78,46 @@ export const Login = ({ switchAuthHandler }) => {
                                 alignItems: "center",
                                 marginBot: "1rem"
                             }}>
-                            <Logo />
-                        </div>
-
-                        <form>
-                            <Input
-                                field="username"
-                                label="Username"
-                                value={formState.username.value}
-                                onChangeHandler={handleInputValueChange}
-                                type="text"
-                                showErrorMessage={formState.username.showError}
-                                validationMessage={usernameValidationMessage}
-                                onBlurHandler={handleInputValidationOnBlur}
-                                placeholder="Username"
-                            />
-                            <Input
-                                field="password"
-                                label="Password"
-                                value={formState.password.value}
-                                onChangeHandler={handleInputValueChange}
-                                type="password"
-                                showErrorMessage={formState.password.showError}
-                                validationMessage={passwordValidationMessage}
-                                onBlurHandler={handleInputValidationOnBlur}
-                                placeholder="Password"
-                            />
-                            <div>
-                                <button onClick={handleLogin} disabled={isSubmitButtonDisabled} className="button is-success">
-                                    Login
-                                </button>
+                                <Logo />
                             </div>
-                            <div><br /></div>
-                        </form>
-                        <span onClick={switchAuthHandler} className="subtitle is-6">
-                            ¿Do you don't have an account? Register here!
-                        </span>
+
+                            <form>
+                                <Input
+                                    field="username"
+                                    label="Username"
+                                    value={formState.username.value}
+                                    onChangeHandler={handleInputValueChange}
+                                    type="text"
+                                    showErrorMessage={formState.username.showError}
+                                    validationMessage={usernameValidationMessage}
+                                    onBlurHandler={handleInputValidationOnBlur}
+                                    placeholder="Username"
+                                />
+                                <Input
+                                    field="password"
+                                    label="Password"
+                                    value={formState.password.value}
+                                    onChangeHandler={handleInputValueChange}
+                                    type="password"
+                                    showErrorMessage={formState.password.showError}
+                                    validationMessage={passwordValidationMessage}
+                                    onBlurHandler={handleInputValidationOnBlur}
+                                    placeholder="Password"
+                                />
+                                <div>
+                                    <button onClick={handleLogin} disabled={isSubmitButtonDisabled} className="button is-success">
+                                        Login
+                                    </button>
+                                </div>
+                                <div><br /></div>
+                            </form>
+                            <span onClick={switchAuthHandler} className="subtitle is-6 cursor-pointer" style={{ cursor: 'pointer' }}>
+                                ¿Do you don't have an account? Register here!
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div >
 
 

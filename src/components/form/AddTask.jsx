@@ -111,7 +111,8 @@ export const AddTask = () => {
         addTask(formState.nameTask.value,
             formState.description.value,
             formState.dateEnd.value
-            );
+        );
+        setFormState({ nameTask: { value: '', isValid: false, showError: false }, dateEnd: { value: '', isValid: false, showError: false }, nameUser: { value: '', isValid: false, showError: false }, description: { value: '', isValid: false, showError: false } });
     }
 
     const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid
