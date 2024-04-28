@@ -109,8 +109,9 @@ export const AddTask = () => {
     const handleAddTask = (event) => {
         event.preventDefault();
         addTask(formState.nameTask.value,
-            formState.dateEnd.value,
-            formState.nameUser.value, formState.description.value);
+            formState.description.value,
+            formState.dateEnd.value
+            );
     }
 
     const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid
@@ -168,24 +169,6 @@ export const AddTask = () => {
                                         validationMessage={validateDateMessage}
                                     />
                                 </div>
-
-                                {/*
-                                <div className="field">
-                                    <Input
-                                        field={'nameUser'}
-                                        label={'Name User'}
-                                        placeholder={'Name user'}
-                                        value={formState.nameUser.value}
-                                        onChangeHandler={handleInputValueChange}
-                                        type={'text'}
-                                        onBlurHandler={handleInputValidationOnBlur}
-                                        showErroMessage={formState.nameUser.showError}
-                                        validationMessage={validateNameMessage}
-                                    />
-                                </div>
-                                    */}
-
-
                                 <div className="control">
                                     <button className="button is-success is-fullwidth " onClick={handleAddTask} disabled={isSubmitButtonDisabled}>AGREGAR</button>
                                 </div>

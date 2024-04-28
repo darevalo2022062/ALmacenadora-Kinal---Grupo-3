@@ -6,9 +6,9 @@ const apiClient = axios.create({
 })
 
 
-export const addTask = async (data) => {
+export const addTask = async ({ nameTask, nameUser, description, dateEnd}) => {
     try {
-        return await apiClient.post('/to-do/createToDo', data);
+        return await apiClient.post('/to-do/createToDo', { nameTask, dateEnd, nameUser, description}, { headers: { "Authorization": `Bearer ${localStorage.getItem('user')}` } });
     } catch (e) {
         return {
             error: true,
@@ -18,6 +18,7 @@ export const addTask = async (data) => {
 };
 
 export const login = async (data) => {
+    console.log("data", data);
     try {
         return await apiClient.post('/auth/login', data);
     } catch (e) {

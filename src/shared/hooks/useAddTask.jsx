@@ -5,10 +5,15 @@ import toast from 'react-hot-toast'
 
 export const useAddTask = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
-    const addTask = async (nameTask, status, dateBegin, dateEnd, nameUser, description) => {
+
+    const addTask = async (nameTask, description, dateEnd) => {
         setIsLoading(true);
-        const response = await addTaskRequest({ nameTask, status, dateBegin, dateEnd, nameUser, description });
+        let nameUser = JSON.parse(localStorage.getItem('name'));
+        console.log(nameTask, " ", nameUser, " ", dateEnd, " ", description);
+        const response = await addTaskRequest({ nameTask, nameUser, description, dateEnd });
+
+        console.log("Response Data: ", response);
+
         setIsLoading(false);
 
         if (response.error) {
@@ -16,7 +21,7 @@ export const useAddTask = () => {
                 response.e?.response?.data || 'Ocurrio un error al agregar tarea'
             )
         }
-        navigate('/')
+
     }
     return {
         addTask,

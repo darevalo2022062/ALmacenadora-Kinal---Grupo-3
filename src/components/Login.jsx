@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Logo } from "./Logo";
 import { Input } from "./Input";
 import {
-    validateEmail,
-    emailValidationMessage,
+    validateUsername,
+    usernameValidationMessage,
     validatePassword,
     passwordValidationMessage
 } from "../shared/validators";
@@ -15,7 +15,7 @@ export const Login = ({ switchAuthHandler }) => {
     const { login, isLoading } = useLogin();
 
     const [formState, setFormState] = useState({
-        email: {
+        username: {
             value: "",
             isValid: false,
             showError: false
@@ -40,8 +40,8 @@ export const Login = ({ switchAuthHandler }) => {
     const handleInputValidationOnBlur = (value, field) => {
         let isValid = false;
         switch (field) {
-            case "email":
-                isValid = validateEmail(value);
+            case "username":
+                isValid = validateUsername(value);
                 break;
             case "password":
                 isValid = validatePassword(value);
@@ -62,100 +62,11 @@ export const Login = ({ switchAuthHandler }) => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        login(formState.email.value, formState.password.value);
+        login(formState.username.value, formState.password.value);
     };
 
-    const isSubmitButtonDisabled = isLoading || !formState.password.isValid || !formState.email.isValid;
+    const isSubmitButtonDisabled = isLoading || !formState.password.isValid || !formState.username.isValid;
     return (
-        // <>
-        //     <div className="container flex-direction: column"
-        //         // style={{
-        //         //     marginTop: "6%",
-        //         //     width: "100%",
-        //         //     height: "auto",
-        //         //     display: "flex",
-        //         //     justifyContent: "center",
-        //         //     alignItems: "center"
-        //         // }}
-        //     >
-        //         <div className="card"
-        //             // style={
-        //             //     {
-        //             //         width: "30%",
-        //             //         height: "auto",
-        //             //         marginBottom: "1.5rem",
-        //             //         display: "flex",
-        //             //         justifyContent: "center",
-        //             //         alignItems: "center",
-        //             //         textAlign: "center",
-        //             //         // backgroundColor: "#0E46A3  ",
-        //             //     }
-        //             // }
-        //         >
-        //             <div className="card-content" style={{
-        //                 // display: "flex",
-        //                 // flexDirection: "column",
-        //                 // alignItems: "center",
-        //                 // justifyContent: "center",
-        //                 // width: "400px",
-        //                 // margin: "0 auto",
-
-        //             }}>
-
-        //                 <Logo />
-        //                 <form>
-        //                     <Input
-        //                         field="email"
-        //                         label="Username"
-        //                         value={formState.email.value}
-        //                         onChangeHandler={handleInputValueChange}
-        //                         type="text"
-        //                         showErrorMessage={formState.email.showError}
-        //                         validationMessage={emailValidationMessage}
-        //                         onBlurHandler={handleInputValidationOnBlur}
-        //                         placeholder={"Username"}
-        //                     />
-        //                     <Input
-        //                         field="password"
-        //                         label="Password"
-        //                         value={formState.password.value}
-        //                         onChangeHandler={handleInputValueChange}
-        //                         type="password"
-        //                         showErrorMessage={formState.password.showError}
-        //                         validationMessage={passwordValidationMessage}
-        //                         onBlurHandler={handleInputValidationOnBlur}
-        //                         placeholder={"Password"}
-        //                     />
-        //                     <div>
-        //                         <button onClick={handleLogin} disabled={isSubmitButtonDisabled} className="button is-success"
-        //                             style={
-        //                                 {
-        //                                     marginTop: "10%",
-        //                                     width: "30%",
-        //                                     cursor: "pointer",
-        //                                     color: "white",
-        //                                 }
-        //                             }
-        //                         >
-        //                             Login
-        //                         </button>
-        //                     </div>
-
-        //                 </form>
-        //                 <span onClick={switchAuthHandler} className="subtitle is-6"
-        //                     style={{
-        //                         cursor: "pointer",
-        //                         marginTop: "1rem",
-        //                         color: "white",
-        //                     }}
-        //                 >
-        //                     ¿Do you don't have an account? Register here!
-        //                 </span>
-        //             </div>
-        //         </div >
-        //     </div>
-        // </>
-
         <div className="container flex-direction: column">
             <div className="columns is-centered">
                 <div className="column is-one-third ">
@@ -172,13 +83,13 @@ export const Login = ({ switchAuthHandler }) => {
 
                         <form>
                             <Input
-                                field="email"
+                                field="username"
                                 label="Username"
-                                value={formState.email.value}
+                                value={formState.username.value}
                                 onChangeHandler={handleInputValueChange}
                                 type="text"
-                                showErrorMessage={formState.email.showError}
-                                validationMessage={emailValidationMessage}
+                                showErrorMessage={formState.username.showError}
+                                validationMessage={usernameValidationMessage}
                                 onBlurHandler={handleInputValidationOnBlur}
                                 placeholder="Username"
                             />

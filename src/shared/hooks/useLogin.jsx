@@ -14,14 +14,18 @@ export const useLogin = () => {
         setIsLoading(false);
 
         if (response.error) {
-            return toast.error(response.error?.response?.data || "Error trying to login, please try again");
+            return toast.error(response.e?.response?.data.msg || response.e?.response?.data?.errors[0]?.msg || "Error trying to login, please try again");
         }
 
-        const { userDetails } = response.data;
+        const { token } = response.data;
+        const { name } = response.data;
 
-        localStorage.setItem('user', JSON.stringify(userDetails));
+        console.log("Response Data: ", response.data);
+        localStorage.setItem('user', JSON.stringify(token));
+        localStorage.setItem('name', JSON.stringify(name));
 
-        navigate("/");
+
+        navigate("/taskBoard");
 
     }
 
