@@ -138,7 +138,7 @@ export const AddTask = () => {
                                         onChangeHandler={handleInputValueChange}
                                         type={'text'}
                                         onBlurHandler={handleInputValidationOnBlur}
-                                        showErroMessage={formState.nameTask.showError}
+                                        showErrorMessage={formState.nameTask.showError}
                                         validationMessage={validateNameTaskMessage}
                                     />
                                 </div>
