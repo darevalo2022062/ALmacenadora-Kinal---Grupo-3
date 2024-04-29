@@ -9,7 +9,7 @@ import {
 } from "../shared/validators";
 import { useLogin } from "../shared/hooks";
 import "bulma/css/bulma.min.css"
-
+import logo from '../assets/img/almacenadoraIcon.png'
 
 export const Login = ({ switchAuthHandler }) => {
     const { login, isLoading } = useLogin();
@@ -78,7 +78,7 @@ export const Login = ({ switchAuthHandler }) => {
                                 alignItems: "center",
                                 marginBot: "1rem"
                             }}>
-                                <Logo />
+                                <Logo logo={logo}/>
                             </div>
 
                             <form>

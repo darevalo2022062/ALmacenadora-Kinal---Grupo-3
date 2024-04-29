@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Login } from "../../components/Login"
-
+import { Register } from "../../components/Register"
 import "bulma/css/bulma.min.css"
 
 export const AuthPage = () => {
@@ -15,9 +15,7 @@ export const AuthPage = () => {
             {isLogin ? (
                 <Login switchAuthHandler={handleAuthPageToggle} />
             ) : (
-                <div>
-                    <h1>Page change</h1>
-                </div>
+                <Register switchAuthHandler={handleAuthPageToggle}/>
             )
             }
         </div>

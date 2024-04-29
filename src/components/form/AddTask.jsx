@@ -152,7 +152,7 @@ export const AddTask = () => {
                                         onChangeHandler={handleInputValueChange}
                                         type={'textarea'}
                                         onBlurHandler={handleInputValidationOnBlur}
-                                        showErroMessage={formState.description.showError}
+                                        showErrorMessage={formState.description.showError}
                                         validationMessage={validateDescriptionMessage}
                                     />
                                 </div>
@@ -166,7 +166,7 @@ export const AddTask = () => {
                                         onChangeHandler={handleInputValueChange}
                                         type={'date'}
                                         onBlurHandler={handleInputValidationOnBlur}
-                                        showErroMessage={formState.dateEnd.showError}
+                                        showErrorMessage={formState.dateEnd.showError}
                                         validationMessage={validateDateMessage}
                                     />
                                 </div>

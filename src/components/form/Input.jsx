@@ -7,7 +7,7 @@ export const Input = ({
     value,
     onChangeHandler,
     type,
-    showErroMessage,
+    showErrorMessage,
     validationMessage,
     onBlurHandler,
     textarea
@@ -46,9 +46,9 @@ export const Input = ({
                     />
                 )
                 }
-                <span>
-                    {showErroMessage && validationMessage}
-                </span>
+                {showErrorMessage && (
+                    <p className="help is-danger">{validationMessage}</p>
+                )}
             </div>
         </div>
     )
