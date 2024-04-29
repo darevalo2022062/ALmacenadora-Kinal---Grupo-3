@@ -169,9 +169,12 @@ export const Register = ({ switchAuthHandler }) => {
                                     placeholder="Confirm Password"
                                 />
                                 <div className="has-text-centered">
-                                    <button onClick={handleRegister} disabled={isSubmitButtonDisabled} className="button is-primary ">
-                                        Register
-                                    </button>
+                            <br />
+                                    <div onClick={switchAuthHandler}>
+                                        <button onClick={handleRegister} disabled={isSubmitButtonDisabled} className="button is-primary is-fullwidth">
+                                            Register
+                                        </button>
+                                    </div>
                                 </div>
                                 <div><br /></div>
                             </form>

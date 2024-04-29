@@ -8,6 +8,7 @@ export const useAddTask = () => {
 
     const addTask = async (nameTask, description, dateEnd) => {
         setIsLoading(true);
+        console.log("LocalStorage: "+localStorage.getItem('name'));
         let nameUser = JSON.parse(localStorage.getItem('name'));
         const response = await addTaskRequest({ nameTask, nameUser, description, dateEnd });
         toast.success("Tarea agregada con exito")
