@@ -17,6 +17,28 @@ export const addTask = async ({ nameTask, nameUser, description, dateEnd}) => {
     }
 };
 
+export const getTasks = async () => {
+    try {
+        return await apiClient.get('/to-do/viewToDo');
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+export const deleteTask = async (id) => {
+    try {
+        return await apiClient.delete(`/to-do/deleteToDo/${id}`);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
 export const login = async (data) => {
     console.log("data", data);
     try {

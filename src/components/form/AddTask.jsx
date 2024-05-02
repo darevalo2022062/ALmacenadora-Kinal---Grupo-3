@@ -12,7 +12,7 @@ import {
     validateDescription,
     validateDescriptionMessage
 } from "../../shared/validator";
-import { useAddTask } from '../../shared/hooks'
+import { useAddTask } from '../../shared/hooks/useAddTask'
 import "bulma/css/bulma.min.css";
 
 const inputs = [
@@ -113,6 +113,7 @@ export const AddTask = () => {
             formState.dateEnd.value
         );
         setFormState({ nameTask: { value: '', isValid: false, showError: false }, dateEnd: { value: '', isValid: false, showError: false }, nameUser: { value: '', isValid: false, showError: false }, description: { value: '', isValid: false, showError: false } });
+        
     }
 
     const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid
