@@ -1,5 +1,9 @@
 import { AddTask } from '../../components/form/AddTask'
 import { ListaTareas } from '../../components/ListaTareas';
+import { Navbar } from '../../components/navbar/Navbar';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 export const TaskBoardPage = () => {
 
@@ -12,17 +16,13 @@ export const TaskBoardPage = () => {
     // }, [navigate]);
 
     return (
-
-        <div>
-            <AddTask />
-        </div>
-        
-        // localStorage.getItem('user') ? (
-        //     <div>
-        //         <Navbar />
-        //         <br />
-        //         <AddTask />
-        //     </div>
-        // ) : null
+        localStorage.getItem('user') ? (
+            <div>
+                <Navbar />
+                <br />
+                <AddTask />
+                <ListaTareas />
+            </div>
+        ) : null
     );
 }
