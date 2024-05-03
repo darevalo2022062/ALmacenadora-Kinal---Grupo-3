@@ -19,7 +19,6 @@ export const ListaTareas = () => {
     useEffect(() => {
         getTasks();
     }, []);
-
     //console.log({ tasks, isLoading, error }, 'ListaTareas.jsx');
 
     const handleDeleteTask = (event) => {
@@ -36,36 +35,83 @@ export const ListaTareas = () => {
     }
 
     return (
-        <div>
-            <h1 className='title-list'>Lista de Tareas</h1>
-            {isLoading ? (
-                <p>Cargando tareas...</p>
-            ) : error ? (
-                <p>Hubo un error al cargar las tareas: {error.message}</p>
-            ) : (
-                <ul>
-                    {tasks.map((task, taskIndex) => (
-                        <li key={taskIndex}>
-                            <h2>Tareas Principales</h2>
-                            <ul>
-                                {task.toDo.map((item, itemIndex) => (
-                                    <li key={item._id}>
-                                        {item.nameTask} - 
-                                        Estado: {item.status ? 'Completada' : 'Pendiente'} - 
-                                        Comienza: {item.dateBegin} - 
-                                        Termina: {item.dateEnd} - 
-                                        User: {item.nameUser} - 
-                                        <button data-id={item._id} onClick={handleDeleteTask}>Eliminar</button>
-                                        <input type="checkbox" checked={item.status} data-id={item._id} onClick={handleUpdateTask} />
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className='card'>
+            <div className='card-content'>
+                <h1 className='title is-5 has-text-centered'>THINGS TO DO</h1>
+                {isLoading ? (
+                    <p>Cargando tareas...</p>
+                ) : error ? (
+                    <p>Hubo un error al cargar las tareas: {error.message}</p>
+                ) : (
+                    <ul>
+                        {tasks.map((task, taskIndex) => (
+                            <li key={taskIndex}>
+                                <ul>
+                                    {task.toDo.map(item => (
+                                        <li key={item.id}>
+                                            <div className='card m-4'>
+                                                <div className='card-content'>
+                                                    <div className='content'>
+                                                        <div className='grid row-gap-0 has-text-centered'>
+                                                            <div className='cell'>
+                                                                <div className='column'>
+                                                                    <label htmlFor="checkbox" className='label'>Check</label>
+                                                                    <input className='checkbox' id='checkbox' type="checkbox" checked={item.status} data-id={item.id} onClick={handleUpdateTask} />
+                                                                </div>
+                                                            </div>
+                                                            <div className='cell'>
+                                                                <p className='control'>
+                                                                    <p className='label' readOnly>Name task:</p>
+                                                                </p>
+                                                                <p className="control">
+                                                                    <p type="label">{item.nameTask}</p>
+                                                                </p>
+                                                                <p className='control'>
+                                                                    <p className='label'> Date Begin:</p>
+                                                                </p>
+                                                                <p className="control">
+                                                                    <p type="date" className='' >{item.dateBegin}</p>
+                                                                </p>
+                                                            </div>
+                                                            <div className='cell'>
+                                                                <p className='control'>
+                                                                    <p className='label' readOnly>State:</p>
+                                                                </p>
+                                                                <p className="control">
+                                                                    <p type="text" className={`text ${item.status ? 'has-text-success' : 'has-text-danger'}`} >{item.status ? 'Completed' : 'Earring'}</p>
+                                                                </p>
+
+                                                                <p className='control'>
+                                                                    <p className='label'> Date End:</p>
+                                                                </p>
+                                                                <p className="control">
+                                                                    <p type="date" className='' >{item.dateEnd}</p>
+                                                                </p>
+
+                                                            </div>
+                                                            <div className='cell'>
+                                                                <p className='control'>
+                                                                    <p className='label' readOnly>User:</p>
+                                                                </p>
+                                                                <p className="control">
+                                                                    <p className='text'>{item.nameUser}</p>
+                                                                </p>
+                                                                <button className="button is-danger" data-id={item.id} onClick={handleDeleteTask}>Eliminar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
-    
+
 
 };

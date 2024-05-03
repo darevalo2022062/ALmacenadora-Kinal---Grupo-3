@@ -10,10 +10,10 @@ export const useDeleteTask = () => {
         const response = await deleteTaskRequest(id);
         if (response.error) {
             return toast.error(
-                response.e?.response?.data || 'Ocurrio un error al eliminar tarea'
+                response.e?.response?.data || 'An error occurred while deleting task'
             )
         }
-        toast.success("Tarea eliminada con exito")
+        toast.success("Task deleted successfully")
         setIsLoading(false);
 
     }

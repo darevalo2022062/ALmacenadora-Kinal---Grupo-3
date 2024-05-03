@@ -113,7 +113,6 @@ export const AddTask = () => {
             formState.dateEnd.value
         );
         setFormState({ nameTask: { value: '', isValid: false, showError: false }, dateEnd: { value: '', isValid: false, showError: false }, nameUser: { value: '', isValid: false, showError: false }, description: { value: '', isValid: false, showError: false } });
-        
     }
 
     const isSubmitButtonDisabled = isLoading || !formState.nameTask.isValid
@@ -128,7 +127,7 @@ export const AddTask = () => {
                 <div className="card">
                     <div className="card-content">
                         <div className="content">
-                            <h1 className="title columns is-centered">Agregar Tarea</h1>
+                            <h1 className="title columns is-centered">ADD TASK</h1>
                             <form className="">
                                 <div className="field">
                                     <Input
@@ -174,9 +173,7 @@ export const AddTask = () => {
                                 <div className="control">
                                     <button className="button is-success is-fullwidth " onClick={handleAddTask} disabled={isSubmitButtonDisabled}>AGREGAR</button>
                                 </div>
-
                             </form>
-
                         </div>
                     </div>
                 </div>

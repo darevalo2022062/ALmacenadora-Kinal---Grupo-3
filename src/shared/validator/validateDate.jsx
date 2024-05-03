@@ -4,4 +4,4 @@ export const validateDate =(date)=>{
     return regex.test(date)
 }
 
-export const validateDateMessage = 'La fecha ingresada no es valida';
+export const validateDateMessage = 'The date entered is not valid';

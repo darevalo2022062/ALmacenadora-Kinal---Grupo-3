@@ -17,7 +17,7 @@ export const useRegister = () => {
             );
         }
         navigate('/auth');
-        return toast.success('Se ha registrado con exito')
+        return toast.success('You have successfully registered')
     }
 
     return {

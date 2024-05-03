@@ -1,12 +1,11 @@
 import { AddTask } from '../../components/form/AddTask'
 import { ListaTareas } from '../../components/ListaTareas';
 import { Navbar } from '../../components/navbar/Navbar';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
 
 export const TaskBoardPage = () => {
-
+    const [addTask, setAddTask] = useState(false);
+    const [listTasks, setListTasks] = useState(false);
     // const navigate = useNavigate();
 
     // useEffect(() => {
@@ -15,13 +14,28 @@ export const TaskBoardPage = () => {
     //     }
     // }, [navigate]);
 
+    const handleToggleAddTask = () => {
+        if(listTasks){
+            setListTasks(!listTasks)
+        }
+        setAddTask(!addTask); // Cambia el estado showAddTask al contrario de su valor actual
+    };
+
+    const handleToggleListTasks = () => {
+        if(addTask){
+            setAddTask(!addTask)
+        }
+        setListTasks(!listTasks); // Cambia el estado showAddTask al contrario de su valor actual
+    };
+
+
     return (
         localStorage.getItem('user') ? (
             <div>
-                <Navbar />
+                <Navbar toggleAddTask={handleToggleAddTask} toggleListTasks={handleToggleListTasks} />
+                {addTask && <AddTask />}
                 <br />
-                <AddTask />
-                <ListaTareas />
+                {listTasks && <ListaTareas />}
             </div>
         ) : null
     );

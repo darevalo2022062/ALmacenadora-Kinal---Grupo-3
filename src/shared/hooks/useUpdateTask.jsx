@@ -9,12 +9,12 @@ export const useUpdateTask = () => {
     const updateTask = async (id) => {
         setIsLoading(true);
         const response = await updateTaskRequest(id);
-        toast.success("Tarea actualizada con exito")
+        toast.success("Task updated successfully")
         setIsLoading(false);
 
         if (response.error) {
             return toast.error(
-                response.e?.response?.data || 'Ocurrio un error al actualizar tarea'
+                response.e?.response?.data || 'An error occurred while updating task'
             )
         }
 

@@ -15,12 +15,10 @@ export const useGetTasks = () => {
 
         try {
             const response = await getTasksRequest();
-            console.log("response data funka?", response.data);
             if (response.error) {
-                throw new Error(response.e?.response?.data || 'Ocurrió un error al obtener las tareas');
+                throw new Error(response.e?.response?.data || 'An error occurred while fetching tasks');
             }
             setTasks(Array.isArray(response.data) ? response.data : (response.data ? [response.data] : []));
-            console.log("tasks data", tasks);
         } catch (e) {
             setError(e);
             toast.error(e.message);
