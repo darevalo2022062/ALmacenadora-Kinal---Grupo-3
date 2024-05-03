@@ -4,13 +4,15 @@ archivo llamado ListaTareas.jsx. En este archivo, crea un componente llamado Lis
 renderice una lista de elementos. Usa el estado de React para almacenar los elementos de la
 lista (Array)." */
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useGetTasks } from '../shared/hooks/useGetTask';
 import { useDeleteTask } from '../shared/hooks/useDeleteTask';
+import { useUpdateTask } from '../shared/hooks/useUpdateTask';
 
 
 export const ListaTareas = () => {
     const { tasks, getTasks, isLoading, error } = useGetTasks();
+    const { updateTask } = useUpdateTask();
     const { deleteTask } = useDeleteTask();
     console.log("tasks JSX", tasks);
 
@@ -24,6 +26,13 @@ export const ListaTareas = () => {
         event.preventDefault();
         const id = event.target.getAttribute('data-id');
         deleteTask(id).then(() => getTasks());
+    }
+
+    const handleUpdateTask = (event) => {
+        event.preventDefault();
+        const id = event.target.getAttribute('data-id');
+        updateTask(id).then(() => getTasks());
+        event.target.checked = true;
     }
 
     return (
@@ -47,6 +56,7 @@ export const ListaTareas = () => {
                                         Termina: {item.dateEnd} - 
                                         User: {item.nameUser} - 
                                         <button data-id={item._id} onClick={handleDeleteTask}>Eliminar</button>
+                                        <input type="checkbox" checked={item.status} data-id={item._id} onClick={handleUpdateTask} />
                                     </li>
                                 ))}
                             </ul>

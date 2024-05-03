@@ -39,6 +39,17 @@ export const deleteTask = async (id) => {
     }
 }
 
+export const updateTask = async (id) => {
+    try {
+        return await apiClient.put(`/to-do/updateToDo/${id}`);
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
 export const login = async (data) => {
     console.log("data", data);
     try {

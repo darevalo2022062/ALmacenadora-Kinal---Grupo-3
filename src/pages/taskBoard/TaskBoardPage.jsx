@@ -1,6 +1,6 @@
 import { AddTask } from '../../components/form/AddTask'
 import { ListaTareas } from '../../components/ListaTareas'
-import './taskBoard.css'
+//import './taskBoard.css'
 
 export const TaskBoardPage = () => {
     return (
